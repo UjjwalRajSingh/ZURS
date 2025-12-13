@@ -3,7 +3,7 @@
 @Metadata.ignorePropagatedAnnotations: true
 define view entity ZURS_BOOKING as select from /dmo/booking_m
 --Composition child for Booking with Supplements
-composition[0..*] of ZURS_BOOK_SUPPL as _BookingSupplement
+composition[0..*] of ZURS_BOOKSUPPL as _BookingSupplement
 
 association to parent ZURS_TRAVEL as _Travel on
     $projection.TravelId = _Travel.TravelId

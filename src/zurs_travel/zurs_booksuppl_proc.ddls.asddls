@@ -2,7 +2,7 @@
 @EndUserText.label: 'BO Proj: Booking Suppl. (Processor)'
 @Metadata.ignorePropagatedAnnotations: false
 @Metadata.allowExtensions: true
-define view entity ZURS_BOOKSUPPL_PROCESSOR as projection on ZURS_BOOK_SUPPL
+define view entity ZURS_BOOKSUPPL_PROC as projection on ZURS_BOOKSUPPL
 {
     key TravelId,
     key BookingId,
@@ -20,7 +20,7 @@ define view entity ZURS_BOOKSUPPL_PROCESSOR as projection on ZURS_BOOK_SUPPL
     CurrencyCode,
     LastChangedAt,
     /* Associations */
-    _Booking: redirected to parent ZURS_BOOKING_PROCESSOR,
-    _Travel: redirected to ZURS_TRAVEL_PROCESSOR
+    _Booking: redirected to parent ZURS_BOOKING_PROC,
+    _Travel: redirected to ZURS_TRAVEL_PROC
 }
  

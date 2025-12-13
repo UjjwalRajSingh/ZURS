@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DDLS>
-    <DDLNAME>ZURS_BOOKSUPPL_PROCESSOR</DDLNAME>
+    <DDLNAME>ZURS_BOOKSUPPL_PROC</DDLNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <DDTEXT>BO Projection: Booking Suppl. (Processor)</DDTEXT>
     <SOURCE_TYPE>P</SOURCE_TYPE>

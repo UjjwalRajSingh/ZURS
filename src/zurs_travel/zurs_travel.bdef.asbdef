@@ -1,0 +1,53 @@
+managed implementation in class zbp_urs_travel unique;
+//Guideline and best practice for definition to be followed
+strict ( 2 );
+
+//Define the behavior for Root entity
+define behavior for ZURS_TRAVEL alias Travel
+//Telling the framework to insert data in this db table for travel request
+persistent table /dmo/travel_m
+//How the RAP should handle the locks - if a travel request is locked
+//The other users cannot edit the childs - like its bookings and suppl
+lock master
+//controls the permissions and security settings for our RAP BO
+authorization master ( instance )
+//controlling the concurrency
+etag master LastChangedAt
+{
+  //Here are the operations which RAP with generate automatically (manage)
+  create;
+  update;
+  delete;
+  //a booking can only be created with travel request
+  association _Booking { create; }
+}
+
+//Define the behavior for child entity
+define behavior for ZURS_BOOKING alias Booking
+//Telling the framework to insert data in this db table for booking
+persistent table /dmo/booking_m
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  association _Travel;
+  association _BookingSupplement { create; }
+}
+
+//Define the behavior for child entity
+define behavior for ZURS_BOOKSUPPL alias BookSuppl
+//Telling the framework to insert data in this db table for booking suppl
+persistent table /dmo/booksuppl_m
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) BookingId, TravelId;
+  association _Travel;
+  association _Booking;
+}

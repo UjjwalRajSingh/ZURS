@@ -2,7 +2,7 @@
 @EndUserText.label: 'BO Projection: Travel (Processor)'
 @Metadata.ignorePropagatedAnnotations: false
 @Metadata.allowExtensions: true
-define root view entity ZURS_TRAVEL_PROCESSOR as projection on ZURS_TRAVEL
+define root view entity ZURS_TRAVEL_PROC as projection on ZURS_TRAVEL
 {
     @ObjectModel.text.element: [ 'Description' ]
     key TravelId,
@@ -45,7 +45,7 @@ define root view entity ZURS_TRAVEL_PROCESSOR as projection on ZURS_TRAVEL
     Criticality,
     /* Associations */
     _Agency,
-    _Booking: redirected to composition child ZURS_BOOKING_PROCESSOR,
+    _Booking: redirected to composition child ZURS_BOOKING_PROC,
     _Currency,
     _Customer,
     _OverAllStatus,

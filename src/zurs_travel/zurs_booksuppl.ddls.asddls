@@ -1,7 +1,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'BO: Booking Supplements Child Entity'
 @Metadata.ignorePropagatedAnnotations: true
-define view entity ZURS_BOOK_SUPPL as select from /dmo/booksuppl_m
+define view entity ZURS_BOOKSUPPL as select from /dmo/booksuppl_m
 
 association to parent ZURS_BOOKING as _Booking on
     $projection.BookingId = _Booking.BookingId and

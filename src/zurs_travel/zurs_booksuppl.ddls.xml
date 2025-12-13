@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DDLS>
-    <DDLNAME>ZURS_BOOK_SUPPL</DDLNAME>
+    <DDLNAME>ZURS_BOOKSUPPL</DDLNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <DDTEXT>BO: Booking Supplements Child Entity</DDTEXT>
     <SOURCE_TYPE>W</SOURCE_TYPE>

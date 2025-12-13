@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>ZCL_URS_AMDP_FUNC</CLSNAME>
+    <CLSNAME>ZCL_URS_AMDP_PROC</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>AMDP: Calculate TAX</DESCRIPT>
+    <DESCRIPT>AMDP Procedure Demo</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
