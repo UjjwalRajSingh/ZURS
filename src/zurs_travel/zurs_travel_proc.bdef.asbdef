@@ -16,14 +16,14 @@ define behavior for ZURS_BOOKING_PROC alias Booking
   use delete;
 
   use association _Travel;
-//  use association _BookingSupplement { create; }
+  use association _BookingSupplement { create; }
 }
 
-//define behavior for ZATS_XX_BOOKSUPPL_PROCESSOR alias BookingSuppl
-//{
-//  use update;
-//  use delete;
-//
-//  //use association _Travel;
-//  use association _Booking;
-//}
+define behavior for ZURS_BOOKSUPPL_PROC alias BookingSuppl
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+  use association _Booking;
+}

@@ -41,7 +41,7 @@ define view entity ZURS_BOOKING_PROC as projection on ZURS_BOOKING
     LastChangedAt,
     /* Associations */
     _BookingSupplement: redirected to composition child ZURS_BOOKSUPPL_PROC,
-    _Booking_Status,
+    _BookingStatus,
     _Carrier,
     _Connection,
     _Customer,

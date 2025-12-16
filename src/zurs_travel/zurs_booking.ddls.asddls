@@ -14,8 +14,8 @@ association[1..1] to /DMO/I_Carrier as _Carrier on
 association[1..1] to /DMO/I_Connection as _Connection on
     $projection.CarrierId = _Connection.AirlineID and
     $projection.ConnectionId = _Connection.ConnectionID
-association[1..1] to /DMO/I_Booking_Status_VH as _Booking_Status on
-    $projection.BookingStatus = _Booking_Status.BookingStatus
+association[1..1] to /DMO/I_Booking_Status_VH as _BookingStatus on
+    $projection.BookingStatus = _BookingStatus.BookingStatus
 {
     key travel_id as TravelId,
     key booking_id as BookingId,
@@ -34,7 +34,7 @@ association[1..1] to /DMO/I_Booking_Status_VH as _Booking_Status on
     _Customer,
     _Carrier,
     _Connection,
-    _Booking_Status,
+    _BookingStatus,
     _Travel,
     _BookingSupplement
 }

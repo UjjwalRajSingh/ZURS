@@ -23,4 +23,3 @@ define view entity ZURS_BOOKSUPPL_PROC as projection on ZURS_BOOKSUPPL
     _Booking: redirected to parent ZURS_BOOKING_PROC,
     _Travel: redirected to ZURS_TRAVEL_PROC
 }
- 
