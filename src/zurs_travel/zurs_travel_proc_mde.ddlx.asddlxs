@@ -44,7 +44,8 @@ annotate entity ZURS_TRAVEL_PROC
                     position: 20,
                     parentId: 'super',
                     targetQualifier: 'pricing'
-                },{ 
+                },
+                { 
                     purpose: #STANDARD,
                     type: #FIELDGROUP_REFERENCE,
                     label: 'Dates',
@@ -59,18 +60,20 @@ annotate entity ZURS_TRAVEL_PROC
                     position: 20,
                     targetElement: '_Booking'
                 }
-//                ,{ 
-//                    purpose: #STANDARD,
-//                    type: #FIELDGROUP_REFERENCE,
-//                    label: 'Admin Info',
-//                    position: 40,
-//                    parentId: 'super',
-//                    targetQualifier: 'spiderman'
-//                }
+                ,{ 
+                    purpose: #STANDARD,
+                    type: #FIELDGROUP_REFERENCE,
+                    label: 'Admin Info',
+                    position: 40,
+                    parentId: 'super',
+                    targetQualifier: 'spiderman'
+                }
                ]
     @UI.selectionField: [{ position: 10 }]
-    @UI.lineItem: [{ position: 10 }]
-    @UI.identification: [{ position: 10 }]
+    @UI.lineItem: [{ position: 10 }, 
+                   { type: #FOR_ACTION, label: 'Copy Travel', dataAction: 'copyTravel' } ] //inline: true
+    @UI.identification: [{ position: 10 },
+                         { type: #FOR_ACTION, label: 'Copy Lah', dataAction: 'copyTravel' } ]
     TravelId;
     @UI.selectionField: [{ position: 20 }]
     @UI.lineItem: [{ position: 20 }]
@@ -100,13 +103,20 @@ annotate entity ZURS_TRAVEL_PROC
                      importance: #HIGH }]
     @UI.dataPoint: { title: 'Travel Status', qualifier: 'status', criticality: 'Criticality' }
     @UI.fieldGroup: [{ qualifier: 'dates', label: 'Status', position: 30 }]
-    OverallStatus;
-    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Created By', position: 10 }]
-    CreatedBy;
-    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Created On', position: 20 }]
-    CreatedAt;
-    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Changed By', position: 30 }]
-    LastChangedBy;
-    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Changed On', position: 40 }]
-    LastChangedAt;
+    OverallStatus;    
+    @UI.lineItem: [{ position: 80 , importance: #HIGH }]    
+    @EndUserText.label: ' CO2 Tax '
+    CO2Tax;
+    @UI.lineItem: [{ position: 90 , importance: #HIGH }]    
+    @EndUserText.label: ' Day of Flight '
+    dayOfTheFlight;
+    
+//    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Created By', position: 10 }]
+//    CreatedBy;
+//    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Created On', position: 20 }]
+//    CreatedAt;
+//    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Changed By', position: 30 }]
+//    LastChangedBy;
+//    @UI.fieldGroup: [{ qualifier: 'spiderman', label: 'Changed On', position: 40 }]
+//    LastChangedAt;
 }

@@ -1,0 +1,5 @@
+CLASS zbp_urs_travel_proc DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zurs_travel_proc.
+ENDCLASS.
+
+CLASS zbp_urs_travel_proc IMPLEMENTATION.
+ENDCLASS.

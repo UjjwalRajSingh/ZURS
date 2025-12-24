@@ -49,10 +49,10 @@ define root view entity ZURS_TRAVEL_PROC as projection on ZURS_TRAVEL
     _Currency,
     _Customer,
     _OverAllStatus,
-//    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_URS_VE_CALC'
+    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_URS_VE_CALC'
     @EndUserText.label: 'CO2 Tax'
     virtual CO2Tax: abap.int4,
-//    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_URS_VE_CALC'
+    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_URS_VE_CALC'
     @EndUserText.label: 'Week Day'
     virtual dayOfTheFlight: abap.char( 9 )    
 }
