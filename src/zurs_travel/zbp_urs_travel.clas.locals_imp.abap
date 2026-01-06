@@ -79,6 +79,11 @@ CLASS lhc_Travel DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS precheck_update FOR PRECHECK
       IMPORTING entities FOR UPDATE travel.
+    METHODS accepttravel FOR MODIFY
+      IMPORTING keys FOR ACTION travel~accepttravel RESULT result.
+
+    METHODS rejecttravel FOR MODIFY
+      IMPORTING keys FOR ACTION travel~rejecttravel RESULT result.
 
     METHODS earlynumbering_create FOR NUMBERING
       IMPORTING entities FOR CREATE travel.
@@ -402,6 +407,14 @@ CLASS lhc_Travel IMPLEMENTATION.
 
     result = VALUE #( FOR travel IN travels
                         ( %tky = travel-%tky
+                          %action-acceptTravel = COND #( WHEN ls_travel-OverallStatus = 'A'
+                                                             THEN if_abap_behv=>fc-o-disabled
+                                                             ELSE if_abap_behv=>fc-o-enabled
+                                                       )
+                          %action-rejectTravel = COND #( WHEN ls_travel-OverallStatus = 'X'
+                                                             THEN if_abap_behv=>fc-o-disabled
+                                                             ELSE if_abap_behv=>fc-o-enabled
+                                                       )
                           %assoc-_Booking = lv_allow
                         )
                     ).
@@ -681,6 +694,50 @@ CLASS lhc_Travel IMPLEMENTATION.
         ENDIF.
     ENDLOOP.
 
+  ENDMETHOD.
+
+  METHOD acceptTravel.
+
+    ""Perform the change of BO instance to change status
+    MODIFY ENTITIES OF zurs_travel IN LOCAL MODE
+        ENTITY travel
+            UPDATE FIELDS ( OverallStatus )
+            WITH VALUE #( for key in keys ( %tky = key-%tky
+                                            %is_draft = key-%is_draft
+                                            OverallStatus = 'A'
+                                          )  ).
+    ""Read the BO instance on which we want to make the changes
+    READ ENTITIES OF zurs_travel IN LOCAL MODE
+        ENTITY Travel
+            ALL FIELDS
+                WITH CORRESPONDING #( keys )
+                    RESULT data(lt_results).
+
+    result = value #( for travel in lt_results ( %tky = travel-%tky
+                                                 %param = travel
+                                               ) ).
+
+  ENDMETHOD.
+
+  METHOD rejectTravel.
+    ""Perform the change of BO instance to change status
+    MODIFY ENTITIES OF zurs_travel IN LOCAL MODE
+        ENTITY travel
+            UPDATE FIELDS ( OverallStatus )
+            WITH VALUE #( for key in keys ( %tky = key-%tky
+                                            %is_draft = key-%is_draft
+                                            OverallStatus = 'X'
+                                          )  ).
+    ""Read the BO instance on which we want to make the changes
+    READ ENTITIES OF zurs_travel IN LOCAL MODE
+        ENTITY Travel
+            ALL FIELDS
+                WITH CORRESPONDING #( keys )
+                    RESULT data(lt_results).
+
+    result = value #( for travel in lt_results ( %tky = travel-%tky
+                                                 %param = travel
+                                               ) ).
   ENDMETHOD.
 
 ENDCLASS.

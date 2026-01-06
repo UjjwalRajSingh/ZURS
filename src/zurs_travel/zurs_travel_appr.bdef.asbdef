@@ -1,0 +1,34 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZURS_TRAVEL_APPR alias Travel
+{
+//  use create;
+  use update;
+//  use delete;
+
+  field (readonly) TravelId, AgencyId, CustomerId, BeginDate,
+                   EndDate, TotalPrice, Description; //CurrencyCode;
+
+  use action acceptTravel;
+  use action rejectTravel;
+//  use action copyTravel;
+//  use action validationCustomer;
+
+  use action Prepare;
+  use action Edit;
+  use action Resume;
+  use action Activate;
+  use action Discard;
+
+  use association _Booking;
+}
+
+define behavior for ZURS_BOOKING_APPR alias Booking
+{
+//  use update;
+//  use delete;
+
+  use association _Travel { with draft; }
+}

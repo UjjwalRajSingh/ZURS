@@ -51,6 +51,10 @@ with additional save
   //Data actions using factory action to create new instances of BO
   factory action copyTravel[1];
 
+  //non factory actions which will change the state of the BO instance
+  action (features: instance) acceptTravel result[1] $self;
+  action (features: instance) rejectTravel result[1] $self;
+
   //create a new determine action
   determine action validationCustomer { validation validateHeaderData; }
   //Adding side-effect which inform RAP to reaload the total price if the booking

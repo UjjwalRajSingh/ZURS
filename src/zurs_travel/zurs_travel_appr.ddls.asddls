@@ -1,8 +1,8 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
-@EndUserText.label: 'BO Projection: Travel (Processor)'
+@EndUserText.label: 'BO Projection: Travel (Approver)'
 @Metadata.ignorePropagatedAnnotations: false
 @Metadata.allowExtensions: true
-define root view entity ZURS_TRAVEL_PROC as projection on ZURS_TRAVEL
+define root view entity ZURS_TRAVEL_APPR as projection on ZURS_TRAVEL
 {
     @ObjectModel.text.element: [ 'Description' ]
     key TravelId,
@@ -24,17 +24,13 @@ define root view entity ZURS_TRAVEL_PROC as projection on ZURS_TRAVEL
     EndDate,
     BookingFee,
     TotalPrice,
-    @Consumption.valueHelpDefinition: [{ 
-        entity.name: 'I_Currency',
-        entity.element: 'Currency'    
-    }]
     CurrencyCode,
     @Semantics.text: true
     Description,
-    @ObjectModel.text.element: [ 'StatusText' ]
     @Consumption.valueHelpDefinition: [{  
         entity.name: '/DMO/I_Overall_Status_VH',
         entity.element: 'OverallStatus' }]
+    @ObjectModel.text.element: [ 'StatusText' ]    
     OverallStatus,
     CreatedBy,
     CreatedAt,
@@ -45,14 +41,8 @@ define root view entity ZURS_TRAVEL_PROC as projection on ZURS_TRAVEL
     Criticality,
     /* Associations */
     _Agency,
-    _Booking: redirected to composition child ZURS_BOOKING_PROC,
+    _Booking: redirected to composition child ZURS_BOOKING_APPR,
     _Currency,
     _Customer,
-    _OverAllStatus,
-    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_URS_VE_CALC'
-    @EndUserText.label: 'CO2 Tax'
-    virtual CO2Tax: abap.int4,
-    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_URS_VE_CALC'
-    @EndUserText.label: 'Week Day'
-    virtual dayOfTheFlight: abap.char( 9 )    
+    _OverAllStatus
 }
